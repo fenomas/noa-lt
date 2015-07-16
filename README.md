@@ -21,7 +21,7 @@
  * 1: projectile that adds blocks
  * 2: projectile that destroys blocks after 3 seconds
  * Z: show/hide debug controls
- * A few other keys: check the source :kissing-heart:
+ * A few other keys: check the source :kissing_heart:
  
 ### To run locally:
  
