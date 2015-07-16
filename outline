@@ -1,0 +1,38 @@
+
+Outline
+
+	Hi, I'm Andy, I'd like to show you a game engine I'm working on.
+	
+	This demo is the slides for a longer talk
+	I'll skip most of it but if you'd like to play, here's the URL
+	
+	So. Voxels!
+	Not just for minecraft, they're simply rasterized 3D data.
+	Applicable for lots of uses and games, which I'll skip here.
+	This game engine essentially solves the problem of drawing voxels quickly.
+	
+	Two quick points about doing this stuff in JS:
+	
+	1: Rendering voxels
+		GPU only groks polygons, so you must convert voxels to polygon meshes
+		(show wireframe)
+		Using 2 tris/voxel would be too many draw calls
+		But if you made the whole scene into one big mesh, it would be
+			too mush work to redo when things change
+		Solving this tradeoff is done with interesting algos (ry..
+
+	Point 2: Performance in V8
+		Obviously this all lives or dies depending on JS performance
+		V8 is fast but temperamental. Getting great performance is 50% black magic.
+		
+		Key takeaways:
+		1. Don't bother guessing what will be fast. It can't be done. Profile.
+			Let the DevTools be your guide.
+		2. Deopts are the main enemy 
+			(take a profile and find the deopt icon)
+			v8 has two engines, a fast and a slow one. Deopt is when v8 was trying to 
+			run a hot function in the fast one, but gave up
+			Deopts can can happen at bizarre times for bizarre reasons
+			If all else fails, trace deopts.
+		
+

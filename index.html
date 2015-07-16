@@ -16,10 +16,549 @@
       
       <div id="intro1" class="slide">
         <div class="title">Voxels in V8</div>
-        <div class="body">(View in desktop Chrome! Slides thataway → )</div>
+        <div class="body">View in desktop Chrome!<br>Slides thataway! → </div>
         <div class="title2">Andy Hall
           <br>2015.7.16</div>
       </div>
+      
+      
+      
+      <div id="intro2" class="slide">
+        <div class="subtitle">
+          Using this presentation:
+        </div>
+        <div class="columnSet">
+          <div class="body" style="text-align:right;">
+            move around:<br>
+            invert mouse:<br>
+            destroy block:<br>
+            place block:<br> 
+            pick block:<br> 
+            zoom:<br> 
+            jump:<br> 
+            jet pack:
+          </div>
+          <div class="body" style="text-align:left;">
+            <code>WASD</code>, arrows
+            <br> <code>I</code>
+            <br> LMB, tap
+            <br> <code>E</code>, RMB
+            <br> <code>Q</code>, middle mouse
+            <br> scroll
+            <br> <code>space</code>
+            <br> <code>R</code>
+          </div>
+        </div>
+        <div class="body" style="font-size:1.3em; margin: auto 0 10px;">
+          (mobile users: sorry lol)
+        </div>
+      </div>
+
+      <div id="intro3" class="slide">
+        <div class="subtitle">
+          About me:
+        </div>
+        <img src="pics/profile.png" style="height: 40%;">
+        <div class="body" style="text-align:center;">
+          <span class="link">
+            @fenomas
+          </span>
+          <br> free gamedev, sometime technical evangelist
+          <br> github/andyhall
+          <br> aphall.com
+        </div>
+      </div>
+
+
+
+      <div id="voxel1" class="slide">
+        <div class="subtitle"
+             style="margin-top: 12%;">
+          Voxels - definition
+        </div>
+        <div class="body"
+             style="margin-bottom: 12%;">
+          tl;dr:
+          <div class="larger"
+               style="margin-top: 10px;">
+            Ever seen Minecraft? 
+            <br> Yeah those.
+          </div>
+        </div>
+      </div>
+
+      <div id="voxel2" class="slide">
+        <div class="subtitle">
+          Voxels - proper definition
+        </div>
+        <div class="body">
+          <p class="larger">
+            Rasterized 3D data.
+          </p>
+        </div>
+        <div class="body">
+          Colloquially, if pixels represent
+          the rasterization of 2D data,
+          voxels are the 3D equivalent.
+        </div>
+        <div class="note" style="margin-top:0;">
+          (Hence "voxel": volumetric pixel)
+        </div>
+      </div>
+
+      <div id="voxel3" class="slide">
+        <img src="pics/sampling.png" style="height: 50%;">
+        <div class="body">
+          Conceptually, voxels are a <i>sampling</i> over some 3D space,
+          just as pixels in a bitmap are samples of 
+          some 2D data (vector graphics, photos, etc).
+        </div>
+        <div class="note link">
+          (Note: click this block for the 
+          <i>amazing</i> webGL demo <br>I stole that image from)
+        </div>
+        <!-- note to any semantic purists viewing source: -->
+        <!-- Those <i> tags are just my way of saying "howdy!" <3 -->
+      </div>
+
+      <div id="voxel4" class="slide">
+        <div class="body">
+          Note: nothing (per se) to do with gaming!
+        </div>
+        <img src="pics/ct_scan.jpg" style="height: 65%;">
+        <div class="note caption">
+          (CT scan data)
+        </div>
+      </div>
+
+
+
+
+      <div id="game1" class="slide">
+        <div class="subtitle">
+          Voxels and Gaming
+        </div>
+        <img src="pics/Comanche_1992.png" style="height: 50%;">
+        <div class="body caption">
+          Comanche, 1992
+        </div>
+        <div class="body link">
+          (Click: list of games with voxels)
+        </div>
+      </div>
+
+      <div id="game2" class="slide">
+        <div class="subtitle">
+          Voxel advantages
+        </div>
+        <img src="pics/Shogi_Ban_Koma.jpg" style="height: 55%;">
+        <div class="body">
+          Provides game with easily grasped structure -
+          <br>
+          Equivalent to grids in 2D games
+        </div>
+      </div>
+
+      <div id="game3" class="slide">
+        <div class="subtitle">
+          Conceptually easy to work with
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>Technical tradeoffs (e.g. CPU vs memory) 
+              largely similar to vectors/bitmaps</li>
+            <li>Some hard things become easy 
+              (raycasting, collision tests..)</li>
+            <li>(Of course some easy things become hard..)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="game4" class="slide">
+        <div class="subtitle">
+          Voxel advantages
+        </div>
+        <div class="body caption">
+          <p class="larger">
+            Mutable worlds for free! (ish)
+          </p>
+        </div>
+        <div class="body link caption">
+          (click: anywhere but here, yo)
+        </div>
+      </div>
+
+      <div id="game5" class="slide">
+        <div class="subtitle">
+          World-affecting game rules
+        </div>
+        <img src="pics/Gospers_glider_gun.gif" style="height: 45%;">
+        <div class="body caption">
+          c.f. "Emergent gameplay"
+        </div>
+        <div class="body columnSet">
+          <div class="body" 
+               style="align-self: flex-start; margin: 0;">
+            Note:
+          </div>
+          <div class="body" style="text-align:left;">
+            <code class="link">"3"</code> to place a Conway Block
+            <br><code class="link">"4"</code> to stop/start simulation
+            <br><span class="link">(click: explanation)</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="game6" class="slide">
+        <div class="subtitle">
+          Note: not just for rendering!
+        </div>
+        <div class="body">
+          Voxels are often useful behind the scenes 
+          regardless of how a game looks
+          (e.g. for physics simulation).
+        </div>
+        <div class="body caption">
+          Conceptually: 3D games should use voxels wherever 
+          a 2D game would use a grid.
+        </div>
+      </div>
+
+
+
+
+      <div id="render1" class="slide">
+        <div class="subtitle">
+          Rendering Voxels
+        </div>
+        <div class="body">
+          <p class="larger">
+            GPUs do not grok voxels!
+          </p>
+        </div>
+        <div class="body caption">
+          In general a conversion step ("meshing")
+          is necessary to convert voxels into 
+          stuff that GPUs understand
+          (vertex lists, normals, etc).
+        </div>
+        <div class="body caption">
+          Here are three approaches:
+        </div>
+      </div>
+
+      <div id="render2" class="slide">
+        <div class="subtitle">
+          Naive Meshing
+        </div>
+        <img src="pics/doob.png" style="height: 50%;">
+        <div class="note link caption">
+          (click: mrdoob's voxel demo)
+        </div>
+        <div class="body">
+          Create one cubic mesh per voxel
+        </div>
+        <div class="body">
+          Problems: poly counts, draw calls
+        </div>
+      </div>
+
+      <div id="render3" class="slide">
+        <div class="subtitle">
+          Culled Meshing
+        </div>
+        <img src="pics/culled.png" style="height: 45%;">
+        <div class="body">
+          Merge voxels into one large mesh, 
+          <br>omitting faces between adjacent voxels.
+        </div>
+        <div class="body">
+          Result: fewer draw calls, still a lot of polys
+        </div>
+      </div>
+
+      <div id="render4" class="slide">
+        <div class="subtitle">
+          "Greedy Meshing"
+        </div>
+        <img src="pics/greedy.png" style="height: 45%;">
+        <div class="body">
+          Scan across voxel slices, merging faces of 
+          adjacent voxels (of the same value).
+        </div>
+        <div class="body">
+          Credit: all-around genius 
+          <span class="link">Mikola Lysenko</span>
+        </div>
+        <div class="body link">
+          (click: algo explanation + live demo)
+        </div>
+      </div>
+
+      <div id="render5" class="slide">
+        <div class="subtitle">
+          Chunking
+        </div>
+        <img src="pics/chunk.png" style="height: 50%;">
+        <div class="body">
+          Necessary tradeoff for large worlds:
+          <br> faster meshing, more draw calls.
+        </div>
+        <div class="note">
+          Minecraft chunks: 16x16x256 (divided vertically)
+          <br>This demo: arbitrary (32x32x32 at the moment)
+        </div>
+      </div>
+
+      <div id="render6" class="slide">
+        <div class="subtitle">
+          Ambient Occlusion
+        </div>
+        <img src="pics/ao.jpg" style="height: 50%;">
+        <div class="body">
+          Comparatively simple for voxels, 
+          <br> and greatly improves visuals
+        </div>
+        <div class="body">
+          <span class="link">Click: toggle AO in this demo</span>
+          <br>(then place a block to trigger meshing)
+        </div>
+      </div>
+
+      <div id="render7" class="slide">
+        <div class="subtitle">
+          Note: Voxels needn't be blocks!
+        </div>
+        <div class="columnSet">
+          <div style="width: 50%;">
+            <div class="body">
+              <img src="pics/voxel-quest.png" style="width: 70%;">
+            </div>
+            <div class="body">
+              Voxel Quest
+            </div>
+            <div class="note link">
+              (click: it's beautiful)
+            </div>
+          </div>
+          <div style="width: 50%;">
+            <div class="body">
+              <img src="pics/ct.jpg" style="width: 70%;">
+            </div>
+            <div class="body">
+              CT scan data
+            </div>
+            <div class="note">
+              (google "marching squares")
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="render8" class="slide">
+        <div class="subtitle">
+          In fact...
+        </div>
+        <img src="pics/crooked.png" style="height: 65%;">
+        <div class="body"></div>
+      </div>
+
+
+
+      <div id="world1" class="slide">
+        <div class="subtitle">
+          World generation
+        </div>
+        <div class="body">
+          Driven deterministically by 
+          noise (Perlin, simplex) and hashing.
+        </div>
+        <div class="body">
+          In this demo:
+        </div>
+        <div class="body caption" style="text-align: left;">
+          2D noise: height map
+          <br> 3D noise: clouds
+          <br> Hashing: tree/flower placement
+        </div>
+        <div class="body link">
+          (click: my homemade n-dimensional hash!)
+        </div>
+      </div>
+
+      <div id="world2" class="slide">
+        <div class="subtitle">
+          Other world algorithms
+        </div>
+        <div class="body">
+          Many voxel algos extend naturally from 
+          2D cases (often heavily researched).
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>Collision tests: simple grid check</li>
+            <li>Raycasting: equivalent to line rasterization (e.g. Bresenham)</li>
+            <li>Physics: had to roll my own, but easier than 3D</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+
+      <div id="noa1" class="slide">
+        <div class="subtitle">
+          noa (this engine)
+          <br>
+          <br> And how I built it
+        </div>
+      </div>
+
+      <div id="noa2" class="slide">
+        <div class="subtitle">
+          Dev stack:
+        </div>
+        <img src="pics/browserify_with_hat.png" style="width: 60%;">
+        <div class="body">
+          node | npm | browserify | beefy
+        </div>
+      </div>
+
+      <div id="noa3" class="slide">
+        <div class="subtitle">
+          Why roll a new engine?
+        </div>
+        <div class="body">
+          I started trying to use 
+          <span class="link">voxel.js</span>
+        </div>
+        <img src="pics/voxeljs.png" style="width: 30%;
+                                           border: none;">
+        <div class="columnSet" style="width:95%;">
+          <div class="body" style="margin:0;">
+            Pros:
+            <br> Tons of great code
+            <br> Extremely modular
+          </div>
+          <div class="body" style="margin:0;">
+            Cons:
+            <br> Massively coupled
+            <br> Dependency hell
+            <br> Renders on bare metal
+          </div>
+        </div>
+      </div>
+
+      <div id="noa4" class="slide">
+        <div class="subtitle">
+          noa's approach:
+        </div>
+        <div class="body">
+          <ul>
+            <li>Reuse code from voxel.js where feasible 
+              <br> (raycasting, meshing..)</li>
+            <li>Otherwise written from scratch 
+              <br> (physics, rendering, controls, AO..)</li>
+            <li><span class="link">Babylon.js for rendering (click)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="noa5" class="slide">
+        <div class="subtitle">
+          State of the project
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>Works(?), performant(?) </li>
+            <li>No docs, all APIs in flux</li>
+            <li><span class="link">Features: see testbed app (click)</span></li>
+            <li>Collaboration welcome, drop me a mail/issue/etc</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div id="thoughts1" class="slide">
+        <div class="subtitle">
+          "Is [HTML/JS] really [ready/fast enough] for gaming yet?"
+        </div>
+        <div class="subtitle">
+          My thoughts after 5 months:
+        </div>
+      </div>
+      
+      
+      <div id="thoughts2" class="slide">
+        <div class="subtitle">
+          Mainly depends on how broad your scope is
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>Targeting one version of one browser makes for an easy life ;)</li>
+            <li>Modern JS is a solid dev platform, if you modularize responsibly</li>
+            <li>The more you use the DOM, the more performance will vary across browsers</li>
+            <li>Mobile: what's that? Does it taste good?</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="thoughts3" class="slide">
+        <div class="subtitle">
+          Performance in V8
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>V8 is very fast, but temperamental</li>
+            <li>Getting great performance is still ~50% black magic</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="thoughts4" class="slide">
+        <div class="subtitle">
+          Key takeaway #1:
+        </div>
+        <div class="body caption">
+          <ul>
+            <li>Don't waste time guessing what will perform well in V8 - it can't be done</li>
+            <li>Master the dev tools instead</li>
+            <li><strong>Profile</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="thoughts5" class="slide">
+        <div class="subtitle">
+          Key takeaway #2:
+        </div>
+        <div class="body caption">
+          <ul>
+            <li><strong>Deopts</strong> murder performance!</li>
+            <li>They can occur unpredictably, and for bizarre reasons.</li>
+            <li>When all else fails: <br><code class="cmdline">chrome --js-flags = "--trace-deopt"</code></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div id="thanks" class="slide">
+        <div class="title" style="font-size: 4em;">
+          Thanks!
+        </div>
+        <div class="title2" style="font-size: 3em;">
+          @fenomas
+          <br>
+          <span class="link">github.com/andyhall</span>
+        </div>
+      </div>
+
+      
+      
       
       
       

@@ -19,6 +19,7 @@ var opts = {
   // inputs
   pointerLock: true,
   inverseY: true,
+  blockTestDistance: 30,
   // world data
   chunkSize: 24,
   chunkAddDistance: 4,
@@ -32,6 +33,7 @@ var opts = {
   playerWidth: 0.9  ,
   playerAutoStep: true,
 }
+var numMobs = 20
 
 
 // create engine
@@ -99,12 +101,12 @@ game.playerEntity.on('tick',function() {
  *    spawn some simple "mob" entities
 */
 
-var numMobs = 10
+
 for (var i=0; i<numMobs; ++i) {
   var size = 1+Math.random()*2
-  var x = 40 -  80*Math.random()
+  var x = (10 + 20*Math.random()) * (Math.random()>0.5 ? 1 : -1)
   var y =  8 +   8*Math.random()
-  var z = 40 -  80*Math.random()
+  var z = (10 + 20*Math.random()) * (Math.random()>0.5 ? 1 : -1)
   createMob( game, atlas, size, size, x, y, z )
 }
 
@@ -124,10 +126,15 @@ game.inputs.down.on('fire', function() {
 
   var loc = game.getTargetBlock()
   if (loc) {
-    game.setBlock(0, loc)
-    // smoke for removed block
-    var parts = addParticles('blocksmoke')
-    parts.mesh.position.copyFromFloats( loc[0]+0.5, loc[1]+0.5, loc[2]+0.5 )
+    var props = game.world.getBlockProperties(loc[0], loc[1], loc[2])
+    if (props && props.slide) {
+      if (props.onclick) props.onclick()
+    } else {
+      game.setBlock(0, loc)
+      // smoke for removed block
+      var parts = addParticles('blocksmoke')
+      parts.mesh.position.copyFromFloats( loc[0]+0.5, loc[1]+0.5, loc[2]+0.5 )
+    }
   }
 })
 
@@ -135,7 +142,11 @@ game.inputs.down.on('fire', function() {
 var placeBlockID = 1
 game.inputs.down.on('mid-fire', function() {
   var loc = game.getTargetBlock()
-  if (loc) placeBlockID = game.getBlock(loc);
+  if (loc) {
+    var props = game.world.getBlockProperties(loc[0], loc[1], loc[2])
+    if (props && props.slide) return
+    placeBlockID = game.getBlock(loc);
+  }
 })
 
 // on right mouse, place remembered block adjacent to target
