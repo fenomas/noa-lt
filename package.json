@@ -1,0 +1,41 @@
+{
+  "name": "noa-testbed",
+  "version": "0.8.0",
+  "description": "Test world for experimental game engine",
+  "main": "index.js",
+  "scripts": {
+    "start": "beefy index.js:bundle.js 8080 --live --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andy Hall",
+  "keywords": [
+    "noa",
+    "voxel",
+    "game",
+    "engine"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "babylon-atlas": "^0.1.0",
+    "gl-vec3": "^1.0.3",
+    "mesh-particle-system": "^0.3.0",
+    "ndarray": "^1.0.16",
+    "ndarray-hash": "0.0.0",
+    "ndhash": "^0.1.0",
+    "noa-engine": "andyhall/noa#ec674696682d6e73cb20a8b65389f76e6a28f234",
+    "simplex-noise": "^2.1.1",
+    "webworkify": "^1.0.2"
+  },
+  "devDependencies": {
+    "beefy": "^2.1.2",
+    "browserify": "^8.1.3",
+    "painterly-textures": "0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andyhall/noa-testbed"
+  },
+  "bugs": {
+    "url": "https://github.com/andyhall/noa-testbed/issues"
+  }
+}

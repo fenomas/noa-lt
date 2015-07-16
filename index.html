@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>game</title>
+    <meta charset="utf-8">
+    <meta name="viewport" 
+          content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <style type="text/css">
+      body {
+        background-color: white;
+        margin: 0px;
+        overflow: hidden;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+      #reticle {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin: -10px 0 0 -10px;
+        z-index: 99;
+        color: white;
+        text-shadow: 1px 1px 0px black;
+        text-align: center;
+      }
+      #help {
+        position: fixed;
+        top: 5px;
+        left: 5px;
+        margin: 10px;
+        padding: 2px 8px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border: 1px solid white;
+        border-radius: 8px;
+        z-index: 98;
+      }
+      #help ul {
+        padding: 0;
+        margin: 5px;
+      }
+      #help li {
+        font: 12px sans-serif;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="help">
+      <ul>
+        <li>WASD, arrows: move</li>
+        <li>L-mouse: destroy</li>
+        <li>R-mouse, E: place</li>
+        <li>M-mouse, Q: pick</li>
+        <li>Scroll: zoom</li>
+        <li>1: block missile</li>
+        <li>2: block bomb</li>
+        <li>3: Conway block</li>
+        <li>4: Conway stop/start</li>
+        <li>R: jetpack</li>
+        <li>I: invert mouse</li>
+        <li>L: toggle pointer lock</li>
+        <li>P: pause</li>
+        <li>H: help</li>
+      </ul>
+    </div>
+    <div id="reticle">+</div>
+    <script type="text/javascript" src="lib/babylon.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
+  </body>
+
+</html>

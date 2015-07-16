@@ -1,0 +1,1 @@
+curl https://raw.githubusercontent.com/BabylonJS/Babylon.js/master/dist/preview%20release%20-%20alpha/babylon.2.2.max.js > lib/babylon.js
