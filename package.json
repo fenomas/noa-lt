@@ -22,6 +22,7 @@
     "ndarray-hash": "0.0.0",
     "ndhash": "^0.1.0",
     "noa-engine": "andyhall/noa#413a7f163c2e0adc858618f430607bceedb0aa93",
+    "pleasejs": "^0.4.2",
     "simplex-noise": "^2.1.1",
     "webworkify": "^1.0.2"
   },

@@ -1,8 +1,13 @@
+/* global BABYLON */
+'use strict';
+
+
 var vec3 = require('gl-vec3')
 var noa = require('noa-engine')
 var Atlas = require('babylon-atlas')
 
 // local modules
+var slides = require('./lib/slides')
 var createUI = require('./lib/ui')
 var createMob = require('./lib/mob')
 var initWorldGen = require('./lib/worldgen')
@@ -15,14 +20,14 @@ var opts = {
   pointerLock: true,
   inverseY: true,
   // world data
-  chunkSize: 20,
-  chunkAddDistance: 5,
-  chunkRemoveDistance: 6,
+  chunkSize: 24,
+  chunkAddDistance: 4,
+  chunkRemoveDistance: 5,
   // rendering
   texturePath: 'textures/',
   maxCameraZoom: 15,
   // player
-  playerStart: [0.5,15,0.5],
+  playerStart: [1.5,15,1.5],
   playerHeight: 1.4,
   playerWidth: 0.9  ,
   playerAutoStep: true,
@@ -34,8 +39,24 @@ var game = noa( opts )
 var addParticles = makeParticles(game)
 var launchProjectile = projectile(game, addParticles)
 
-// set up world generation
-initWorldGen(game)
+// set up world generation, passing in slides data
+initWorldGen(game, slides.slideData)
+
+
+// events to show/hide slides on mouseover
+game.on('tick', function() {
+  var slide = null
+  var loc = game.getTargetBlock()
+  if (loc) {
+    var props = game.world.getBlockProperties(loc[0], loc[1], loc[2])
+    if (props && props.slide) {
+      slide = props.slide
+    }
+  }
+  if (slide) slides.showSlide(slide)
+  else slides.hideSlide()
+})
+
 
 
 
@@ -78,7 +99,7 @@ game.playerEntity.on('tick',function() {
  *    spawn some simple "mob" entities
 */
 
-var numMobs = 20
+var numMobs = 10
 for (var i=0; i<numMobs; ++i) {
   var size = 1+Math.random()*2
   var x = 40 -  80*Math.random()
@@ -151,7 +172,7 @@ game.inputs.down.on('togglePause', function() {
  *  Minimal 'UI' (help menu) and a button to toggle it
 */
 
-createUI(game)
+// createUI(game)
 
 
 
