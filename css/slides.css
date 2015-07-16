@@ -1,0 +1,138 @@
+
+body {
+  background-color: aliceblue;
+  margin: 0px;
+  overflow: hidden;
+}
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+#reticle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  margin: -10px 0 0 -10px;
+  z-index: 90;
+  color: white;
+  text-shadow: 1px 1px 0px black;
+  text-align: center;
+}
+
+
+
+#slideBox {
+  z-index: 99;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: "Source Sans Pro", Avenir, Lato, Verdana, sans-serif;
+  pointer-events: none;
+}
+
+code {
+  font-family: "Source Code Pro", monospace;
+}
+
+ul {
+  text-align: left;
+}
+li + li {
+  margin-top: 10px;
+}
+
+
+.slide {
+  z-index: 99;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 75%;
+  height: 85%;
+  min-width: 500px;
+  min-height: 350px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 15px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 3px 0px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 2%;
+}
+
+.columnSet {
+  display: flex;
+  margin: auto;
+  justify-content: space-around;
+}
+
+.title, .title2, .subtitle {
+  margin: auto 10%;
+  text-align: center;
+}
+
+.body {
+  font-size: 1.8rem;
+  margin: auto 15px;
+  text-align: center;
+}
+
+.note {
+  font-size: 1.4rem;
+  margin: auto 15px;
+  text-align: center;
+}
+
+.slide img {
+  border: 1px solid black;
+  width: auto;
+}
+
+.caption{
+  margin-top: 1%;
+}
+
+.link {
+  color: indianred;
+  /*  text-decoration: underline;*/
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+
+.title2 {
+  font-size: 2.0rem;
+  margin: auto;
+}
+
+.subtitle {
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+
+.larger {
+  font-size: 1.3em;
+}
+
+/*   magical font magic   */
+html{ font-size: 80%; }
+@media screen and (min-width: 800px){  html{   font-size: 100%;   } }
+@media screen and (min-width: 1000px){ html{   font-size: 120%;   } }
+@media screen and (min-width: 1300px){ html{   font-size: 150%;   } }
+
+
+/* hide all slides by default */
+.slide   { display: none }
+
+
+
+
