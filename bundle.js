@@ -974,7 +974,7 @@ function muteWorld(x, z) {
 }
 
 function toggleAO() {
-  noa.rendering.doAO = !noa.rendering.doAO
+  noa.rendering.useAO = !noa.rendering.useAO
 }
 
 
