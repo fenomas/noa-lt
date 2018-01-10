@@ -1,6 +1,6 @@
 
 var path = require('path')
-var webpack = require('webpack')
+
 
 
 module.exports = {
@@ -12,9 +12,15 @@ module.exports = {
         filename: 'bundle.js',
     },
     module: {
-        loaders: [
-            { test: /_worker\.js$/, loader: 'worker-loader?name=world_worker.js' },
-        ],
+        rules: [
+            {
+                test: /\_worker\.js$/,
+                use: {
+                    loader: 'worker-loader',
+                    options: { inline: true, fallback: false }
+                }
+            }
+        ]
     },
     devServer: {
         contentBase: 'docs/',
