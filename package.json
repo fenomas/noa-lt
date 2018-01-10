@@ -1,10 +1,11 @@
 {
   "name": "noa-lt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "'Slides' for an LT about noa",
   "main": "index.js",
   "scripts": {
-    "start": "beefy index.js:bundle.js 8080 --live --open"
+    "start": "webpack-dev-server",
+    "build": "webpack -p"
   },
   "author": "Andy Hall",
   "keywords": [
@@ -15,21 +16,21 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "babylon-atlas": "^0.1.0",
+    "babylon-atlas": "^0.4.0",
     "gl-vec3": "^1.0.3",
     "mesh-particle-system": "^0.5.0",
     "ndarray": "^1.0.16",
     "ndarray-hash": "0.0.0",
     "ndhash": "^0.1.0",
-    "noa-engine": "andyhall/noa#413a7f163c2e0adc858618f430607bceedb0aa93",
+    "noa-engine": "andyhall/noa#develop",
     "pleasejs": "^0.4.2",
-    "simplex-noise": "^2.1.1",
-    "webworkify": "^1.0.2"
+    "simplex-noise": "^2.1.1"
   },
   "devDependencies": {
-    "beefy": "^2.1.2",
-    "browserify": "^8.1.3",
-    "painterly-textures": "0.0.3"
+    "painterly-textures": "0.0.3",
+    "webpack": "3.8.1",
+    "webpack-dev-server": "2.9.4",
+    "worker-loader": "^1.1.0"
   },
   "repository": {
     "type": "git",

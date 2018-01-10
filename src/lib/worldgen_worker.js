@@ -1,4 +1,5 @@
-'use strict';
+'use strict'
+/* globals self */
 
 var SimplexNoise = require('simplex-noise')
 var simplex = new SimplexNoise()
@@ -7,17 +8,21 @@ var ndarray = require('ndarray')
 
 
 
-// module that runs in a worker, and generates world data for each chunk
+// plumbing
+var worldgen = new WorldGen()
+self.onmessage = function (ev) { worldgen.onMessage(ev) }
 
 
-module.exports = function (self) {
+// root module of the web worker
+// catches messages and passes an ndarray off for chunk generation
 
+function WorldGen() {
 
   /*
    *    message handling
   */
 
-  self.addEventListener('message',function (ev){
+  this.onMessage = function (ev){
     var msg = ev && ev.data && ev.data.msg
     if (!msg) return
 
@@ -38,7 +43,7 @@ module.exports = function (self) {
         id: d.id
       })
     }
-  })
+  }
 
 
   /*

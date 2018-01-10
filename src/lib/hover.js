@@ -15,7 +15,7 @@ module.exports = function(game, particleAdder) {
 function Hover(game, particleAdder) {
   var hovering = false
   var parts = particleAdder('jetpack')
-  parts.parent = game.playerEntity.mesh
+  parts.parent = game.ents.getMeshData(game.playerEntity).mesh
 
   game.inputs.bind('hover', 'R')
   game.inputs.down.on('hover', function() {
@@ -37,7 +37,7 @@ function Hover(game, particleAdder) {
 
 
 function hover(game) {
-  var b = game.playerEntity.body
+  var b = game.playerBody
   var f = (b.velocity[1] < 0) ? 40 : 24
   b.applyForce([0, f, 0])
 }

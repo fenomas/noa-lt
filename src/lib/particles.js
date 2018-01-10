@@ -161,7 +161,7 @@ function makeParticleGenerator(game) {
       mps.disposeOnEmpty = true
     }
 
-    game.rendering.addDynamicMesh(mps.mesh)
+    game.rendering.addMeshToScene(mps.mesh, false)
 
     return mps
   }

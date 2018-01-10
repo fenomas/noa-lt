@@ -16,22 +16,24 @@ function createMob( game, _atlas, w, h, x, y, z ) {
 
   var mesh = atlas.makeSpriteMesh( stand_frame )
   mesh.scaling = new BABYLON.Vector3(w, h, 1)
+  mesh.billboardMode = BABYLON.Mesh.BILLBOARDMODE_Y
   
-  var offset = [w/2, h/2, w/2]
+  var offset = [0, h/2, 0]
   var dat = { lastHit:0 }
   
   // add an entity for the "mob"
   var ent = game.entities.add(
     [x,y,z],              // starting loc
     w, h, mesh, offset,   // size, mesh, mesh offset
-    dat, true,            // data object, do physics
-    true, true,           // collide terrain, collide entities
-    true, true            // shadow, isSprite
+    true, true            // do physics, isSprite
   )
-  ent.body.friction = 5
-  ent.body.gravityMultiplier = 1.5
-  ent.on('tick', mobTick.bind(ent))
-  ent.on('collideEntity', collideEntity.bind(ent, game))
+  var body = game.ents.getPhysicsBody(ent)
+  body.friction = 5
+  body.gravityMultiplier = 1.5
+  game.on('tick', function(dt) {
+    mobTick(dt, body, mesh)
+  })
+  // on('collideEntity', collideEntity.bind(ent, game))
 }
 
 function collideEntity(game, other) {
@@ -50,17 +52,16 @@ function collideEntity(game, other) {
   }
 }
 
-function mobTick(dt) {
-  /* jshint validthis:true */
-  var onground = this.body.resting[1] < 0
+function mobTick(dt, body, mesh) {
+  var onground = body.resting[1] < 0
   var fr = (onground) ? stand_frame : jump_frame
-  atlas.setMeshFrame(this.mesh, fr)
+  atlas.setMeshFrame(mesh, fr)
   
   if (onground && Math.random() < .01) {   // jump!
     var x = 4-8*Math.random()
     var z = 4-8*Math.random()
     var y = 7+5*Math.random()
-    this.body.applyImpulse([x,y,z])
+    body.applyImpulse([x,y,z])
   }
 }
 
