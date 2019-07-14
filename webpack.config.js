@@ -2,8 +2,8 @@
 var path = require('path')
 
 
-
 module.exports = {
+    mode: 'development',
     entry: {
         bundle: path.resolve('.', 'src', 'index.js'),
     },
@@ -14,7 +14,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\_worker\.js$/,
+                test: /_worker\.js$/,
                 use: {
                     loader: 'worker-loader',
                     options: { inline: true, fallback: false }
