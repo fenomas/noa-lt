@@ -55,17 +55,17 @@ add( 'thanks',   2, -1,  0,     openlink.bind(null, 'gh') )
 function openlink(name) {
   var urls = {
     twit:   'https://twitter.com/fenomas',
-    webgl:  'http://acko.net/files/fullfrontal/fullfrontal/webglmath/online.html',
-    wiki:   'http://en.wikipedia.org/wiki/Voxel#Computer_games',
-    life:   'http://en.wikipedia.org/wiki/Conway%27s_Game_of_Life',
-    doob:   'http://mrdoob.com/projects/voxels/',
-    greedy: 'http://0fps.net/2012/07/07/meshing-minecraft-part-2/',
-    vq:     'http://www.voxelquest.com/',
-    hash:   'https://github.com/andyhall/ndhash',
-    vjs:    'http://voxeljs.com/',
-    bjs:    'http://babylonjs.com/',
-    test:   'https://github.com/andyhall/noa-testbed',
-    gh:     'https://github.com/andyhall',
+    webgl:  'https://acko.net/files/fullfrontal/fullfrontal/webglmath/online.html',
+    wiki:   'https://en.wikipedia.org/wiki/Voxel#Computer_games',
+    life:   'https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life',
+    doob:   'https://mrdoob.com/projects/voxels/',
+    greedy: 'https://0fps.net/2012/07/07/meshing-minecraft-part-2/',
+    vq:     'https://www.voxelquest.com/',
+    hash:   'https://github.com/fenomas/ndhash',
+    vjs:    'https://voxeljs.com/',
+    bjs:    'https://babylonjs.com/',
+    test:   'https://github.com/fenomas/noa',
+    gh:     'https://github.com/fenomas',
   }
   if (urls[name]) {
     window.open(urls[name], '_blank')

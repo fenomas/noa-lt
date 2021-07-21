@@ -2,12 +2,11 @@
 
 "Slides" for a lightning talk on noa called "Voxels in V8"
 
-[Live demo!](http://andyhall.github.io/noa-lt/) (not mobile-friendly :wink:)
+[Live demo!](http://fenomas.github.io/noa-lt/) (not mobile-friendly :wink:)
 
 ### Relevant links:
 
- * [noa](https://github.com/andyhall/noa): the game engine
- * [noa-testbed](https://github.com/andyhall/noa-testbed): testbed game that implements most engine features
+ * [noa](https://github.com/fenomas/noa): the game engine
 
 ### Demo controls:
 
