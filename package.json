@@ -29,7 +29,7 @@
   "devDependencies": {
     "painterly-textures": "0.0.3",
     "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.7.2",
     "worker-loader": "^2.0.0"
   },
